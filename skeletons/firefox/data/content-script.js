@@ -61,14 +61,13 @@ function injectInPageScript() {
 }
 
 function sendIframes() {
-  var iframes = document.getElementsByTagName('iframe');
-  var urls = [];
-  for (var i = 0, l = iframes.length; i < l; i ++) {
-    urls.push(iframes[i].src);
-  }
-
   // FIXME
   setTimeout(function() {
+    var iframes = document.getElementsByTagName('iframe');
+    var urls = [];
+    for (var i = 0, l = iframes.length; i < l; i ++) {
+      urls.push(iframes[i].src);
+    }
     self.port.emit("emberDebug", { type: 'iframes', urls: urls});
   }, 500);
 }

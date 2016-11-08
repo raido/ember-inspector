@@ -87,22 +87,19 @@
   }
 
   /**
-   * Gather the iframes running in the ClientApp
-   */
-  var iframes = document.getElementsByTagName('iframe');
-  var urls = [];
-  for (var i = 0, l = iframes.length; i < l; i ++) {
-    urls.push(iframes[i].src);
-  }
-
-  /**
    * Send the iframes to EmberInspector so that it can run
    * EmberDebug in the context of the iframe.
    */
   //FIX ME
   setTimeout(function() {
+    /**
+     * Gather the iframes running in the ClientApp
+     */
+    var iframes = document.getElementsByTagName('iframe');
+    var urls = [];
+    for (var i = 0, l = iframes.length; i < l; i ++) {
+      urls.push(iframes[i].src);
+    }
     chrome.extension.sendMessage({type: 'iframes', urls: urls});
   }, 500);
-
-
 }());
